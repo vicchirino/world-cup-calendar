@@ -2,6 +2,9 @@ import styled from "styled-components"
 import { useState } from "react"
 import Button from "../components/Button/Button"
 import TeamsGrid from "../components/TeamsGrid/TeamsGrid"
+import fixtures from "../public/fixture.json"
+import { FixtureItem } from "../types"
+import { createFixtureEvent, downloadCalendarEvents } from "../utils"
 
 const H1 = styled.h1`
   font-size: 50px;
@@ -74,7 +77,10 @@ const TEAMS_LIST = [
 
 const CalendarPage = () => {
   const [teamsSelected, setTeamsSelected] = useState<string[]>([])
-  console.log("Teams selected lenght", teamsSelected.length)
+
+  const fixturesItem: FixtureItem[] = fixtures.response as FixtureItem[]
+  fixturesItem.map(item => createFixtureEvent(item))
+
   return (
     <>
       <SectionWrapper>
@@ -85,7 +91,10 @@ const CalendarPage = () => {
           will adjust automatically to your timezone.
         </Body>
         <CenteredWrapper>
-          <Button onClick={() => {}} text={"Download full 📅"} />
+          <Button
+            onClick={() => downloadCalendarEvents(fixturesItem)}
+            text={"Download full 📅"}
+          />
         </CenteredWrapper>
       </SectionWrapper>
 
@@ -111,16 +120,27 @@ const CalendarPage = () => {
         />
         {teamsSelected.length > 0 && (
           <BodySmall>{`Teams selected: ${teamsSelected.map((team, index) => {
-            console.log("TEAM", team)
             if (index === teamsSelected.length - 1) {
-              return team + "."
+              return " " + team + "."
             } else {
-              return team + "-"
+              return " " + team
             }
           })}`}</BodySmall>
         )}
         <CenteredWrapper>
-          <Button onClick={() => {}} text={"Download custom 📅"} />
+          <Button
+            onClick={() =>
+              downloadCalendarEvents(
+                fixturesItem.filter(
+                  (item: FixtureItem) =>
+                    teamsSelected.includes(item.teams.home.name) ||
+                    teamsSelected.includes(item.teams.away.name)
+                )
+              )
+            }
+            disabled={teamsSelected.length === 0}
+            text={"Download custom 📅"}
+          />
         </CenteredWrapper>
       </SectionWrapper>
       <SectionWrapper>

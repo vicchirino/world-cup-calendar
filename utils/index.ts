@@ -1,3 +1,7 @@
+import { FixtureItem } from "../types"
+import { createEvents, EventAttributes } from "ics"
+import { saveAs } from "file-saver"
+
 export const teamNameWithFlag = (teamName: string, rtl = false): string => {
   let flag = ""
   switch (teamName) {
@@ -99,4 +103,43 @@ export const teamNameWithFlag = (teamName: string, rtl = false): string => {
       break
   }
   return rtl ? `${flag} ${teamName}` : `${teamName} ${flag}`
+}
+
+export const createFixtureEvent = (fixture: FixtureItem) => {
+  const fixtureDate = new Date(fixture.fixture.date)
+  const year = fixtureDate.getFullYear()
+  const month = fixtureDate.getMonth() + 1
+  const day = fixtureDate.getDate()
+  const hours = fixtureDate.getHours()
+  const minutes = fixtureDate.getMinutes()
+  const event: EventAttributes = {
+    start: [year, month, day, hours, minutes],
+    duration: { minutes: 100 },
+    title: `${teamNameWithFlag(
+      fixture.teams.home.name,
+      true
+    )} vs ${teamNameWithFlag(fixture.teams.away.name, true)}`,
+    location: `🏟 ${fixture.fixture.venue.name} ,${fixture.fixture.venue.city}`,
+    // url: "http://www.bolderboulder.com/",
+    categories: ["World Cup", "Qatar 2022", "Football", "Soccer"],
+    status: "CONFIRMED",
+    busyStatus: "FREE",
+    organizer: { name: "World Cup Bot", email: "copadelmundobot@gmail.com" },
+  }
+  // console.log("Event created", event)
+  return event
+}
+
+export const downloadCalendarEvents = (fixtures: FixtureItem[]) => {
+  const events = fixtures.map(fixture => createFixtureEvent(fixture))
+  createEvents(events, (error, value) => {
+    if (error) {
+      console.log(error)
+      return
+    }
+    const blob = new Blob([value], {
+      type: "text/plain;charset=utf-8",
+    })
+    saveAs(blob, "event-schedule.ics")
+  })
 }

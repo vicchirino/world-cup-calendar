@@ -8,8 +8,6 @@ type League = {
   name: string
   country: string
   logo: string
-  flag: string | null
-  season: number | null
   round: string | null
 }
 
@@ -30,14 +28,8 @@ export type FixtureItem = {
 
 export type Fixture = {
   id: number
-  referee: string | null
   timezone: string
   date: string
   timestamp: number
   venue: Venue
-  status: {
-    long: string | null
-    short: string | null
-    elapsed: number | null
-  }
 }

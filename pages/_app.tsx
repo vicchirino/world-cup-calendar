@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { ThemeProvider } from "styled-components"
 
 const MainContainer = styled.div`
-  padding: 50px 50px;
+  padding: 60px 50px;
   display: flex;
   flex-direction: column;
   background-color: ${props => props.theme.colors.background};
