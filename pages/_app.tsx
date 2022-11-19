@@ -15,6 +15,13 @@ const MainContainer = styled.div`
   flex-direction: column;
   background-color: ${props => props.theme.colors.background};
   min-height: 100vh;
+  @media (max-width: 700px) {
+    padding: 60px 20px;
+  }
+
+  @media (max-width: 500px) {
+    padding: 60px 10px;
+  }
 `
 
 export const COLORS = {
