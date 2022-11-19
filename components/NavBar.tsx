@@ -1,10 +1,12 @@
 import styled from "styled-components"
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/router"
+import { useIntl } from "react-intl"
 
 const Nav = styled.nav`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: flex;
   align-items: center;
   background-color: ${props => props.theme.colors.scarlet};
@@ -30,11 +32,19 @@ const NavItem = styled.div<NavItemProps>`
 
 const NavBar = () => {
   const [selected, setSelected] = useState("calendar")
+  const { locale, locales } = useRouter()
+  const { formatMessage } = useIntl()
   return (
     <Nav>
-      <Link href="/calendar" onClick={() => setSelected("calendar")}>
-        <NavItem selected={selected === "calendar"}>Calendar</NavItem>
+      <Link href={locale === "es" ? "/en-US/calendar" : "es/calendar"}>
+        <NavItem selected={false}>{locale === "es" ? "🇺🇸" : "🇦🇷"}</NavItem>
       </Link>
+      <Link href="/calendar" onClick={() => setSelected("calendar")}>
+        <NavItem selected={selected === "calendar"}>
+          {formatMessage({ id: "NavBar.Calendar" })}
+        </NavItem>
+      </Link>
+
       {/* <Link href="/notifications" onClick={() => setSelected("notifications")}>
         <NavItem selected={selected === "notifications"}>Notifications</NavItem>
       </Link> */}

@@ -15,6 +15,11 @@ const nextConfig = {
     // Enables the styled-components SWC transform
     styledComponents: true,
   },
+  i18n: {
+    locales: ["en-US", "es"],
+    defaultLocale: "es",
+    localeDetection: false,
+  },
 }
 
 module.exports = nextConfig

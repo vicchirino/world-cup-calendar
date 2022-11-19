@@ -1,0 +1,11 @@
+{
+  "NavBar.Calendar": "Calendario",
+  "Calendar.Full.H1": "Descarga el calendario completo",
+  "Calendar.Full.Body": "Descargue un archivo de calendario con todos los partidos de la copa del mundo 2022. Esto creará nuevos eventos en Apple Calendar, Google Calendar o Microsoft Outlook. Se ajustará automáticamente a su zona horaria.",
+  "Calendar.Full.Button": "Descarga full 📅",
+  "Calendar.Custom.H1": "Descarga el calendar customizado",
+  "Calendar.Custom.Body": "Selecciona tus equipos favoritos y descarga un calendario con los partidos de los que quieres seguir. Esto creará nuevos eventos en Apple Calendar, Google Calendar o Microsoft Outlook. Se ajustará automáticamente a su zona horaria.",
+  "Calendar.Custom.Button": "Descarga custom 📅",
+  "Calendar.Outro": "La creación de este calendario es segura, el código de esta página es de código abierto y lo puedes encontrar en GitHub. Esto está hecho con amor y solo con fines de diversión/aprendizaje.",
+  "Calendar.Custom.SelectedTeams": "Equipos seleccionados: {teams}"
+}

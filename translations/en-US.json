@@ -1,0 +1,11 @@
+{
+  "NavBar.Calendar": "Calendar",
+  "Calendar.Full.H1": "Download full calendar",
+  "Calendar.Full.Body": "Download a calendar file with all the matches of the world cup 2022. This will create new events on Apple Calendar, Google Calendar or Microsoft Outlook. It will adjust automatically to your time zone.",
+  "Calendar.Full.Button": "Download full 📅",
+  "Calendar.Custom.H1": "Download custom calendar",
+  "Calendar.Custom.Body": "Select your favorite teams and download a calendar with the matches of those you want to follow. This will create new events on Apple Calendar, Google Calendar, or Microsoft Outlook. It will adjust automatically to your timezone.",
+  "Calendar.Custom.Button": "Download custom 📅",
+  "Calendar.Outro": "The creation of this calendar is secure, the code of this page is open source and you can find it on GitHub. This is made with love and only for fun/learning purposes.",
+  "Calendar.Custom.SelectedTeams": "Teams selected: {teams}"
+}

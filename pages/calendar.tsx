@@ -5,6 +5,8 @@ import TeamsGrid from "../components/TeamsGrid/TeamsGrid"
 import fixtures from "../public/fixture.json"
 import { FixtureItem } from "../types"
 import { createFixtureEvent, downloadCalendarEvents } from "../utils"
+import { Icon } from "../components/Icon"
+import { useIntl } from "react-intl"
 
 const H1 = styled.h1`
   font-size: 50px;
@@ -76,6 +78,7 @@ const TEAMS_LIST = [
 ]
 
 const CalendarPage = () => {
+  const { formatMessage } = useIntl()
   const [teamsSelected, setTeamsSelected] = useState<string[]>([])
 
   const fixturesItem: FixtureItem[] = fixtures.response as FixtureItem[]
@@ -84,28 +87,19 @@ const CalendarPage = () => {
   return (
     <>
       <SectionWrapper>
-        <H1>Download full calendar</H1>
-        <Body>
-          Download a calendar file with all the matches of the world cup 2022.
-          This will create new events on your g-cal / appl-cal or wind-cal that
-          will adjust automatically to your timezone.
-        </Body>
+        <H1>{formatMessage({ id: "Calendar.Full.H1" })}</H1>
+        <Body>{formatMessage({ id: "Calendar.Full.Body" })}</Body>
         <CenteredWrapper>
           <Button
             onClick={() => downloadCalendarEvents(fixturesItem)}
-            text={"Download full 📅"}
+            text={formatMessage({ id: "Calendar.Full.Button" })}
           />
         </CenteredWrapper>
       </SectionWrapper>
 
       <SectionWrapper>
-        <H1>Download custom calendar</H1>
-        <Body>
-          Select your favorites teams and download a calendar with the matches
-          of those you want to follow. This will create new events on your
-          g-cal/ app-cal or wind-cal that will adjust automatically to your
-          timezone.
-        </Body>
+        <H1>{formatMessage({ id: "Calendar.Custom.H1" })}</H1>
+        <Body>{formatMessage({ id: "Calendar.Custom.Body" })}</Body>
 
         <TeamsGrid
           teams={TEAMS_LIST}
@@ -119,13 +113,22 @@ const CalendarPage = () => {
           }}
         />
         {teamsSelected.length > 0 && (
-          <BodySmall>{`Teams selected: ${teamsSelected.map((team, index) => {
-            if (index === teamsSelected.length - 1) {
-              return " " + team + "."
-            } else {
-              return " " + team
-            }
-          })}`}</BodySmall>
+          <BodySmall>
+            {formatMessage(
+              {
+                id: "Calendar.Custom.SelectedTeams",
+              },
+              {
+                teams: teamsSelected.map((team, index) => {
+                  if (index === teamsSelected.length - 1) {
+                    return " " + team + "."
+                  } else {
+                    return " " + team
+                  }
+                }),
+              }
+            )}
+          </BodySmall>
         )}
         <CenteredWrapper>
           <Button
@@ -139,16 +142,15 @@ const CalendarPage = () => {
               )
             }
             disabled={teamsSelected.length === 0}
-            text={"Download custom 📅"}
+            text={formatMessage({ id: "Calendar.Custom.Button" })}
           />
         </CenteredWrapper>
       </SectionWrapper>
       <SectionWrapper>
-        <Body>
-          The creation of this calendars is secure, the code of this page is
-          open source and you cand find it on github. This is only for
-          fun/learining propouses. (github-icon)
-        </Body>
+        <Body>{formatMessage({ id: "Calendar.Outro" })}</Body>
+        <CenteredWrapper>
+          <Icon href="https://github.com/vicchirino/world-cup-calendar" />
+        </CenteredWrapper>
       </SectionWrapper>
     </>
   )
