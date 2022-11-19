@@ -123,7 +123,7 @@ const CalendarPage = () => {
                   if (index === teamsSelected.length - 1) {
                     return " " + team + "."
                   } else {
-                    return " " + team
+                    return " " + team + ", "
                   }
                 }),
               }
