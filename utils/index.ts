@@ -138,8 +138,9 @@ export const downloadCalendarEvents = (fixtures: FixtureItem[]) => {
       return
     }
     const blob = new Blob([value], {
-      type: "text/plain;charset=utf-8",
+      type: "text/calendar'",
     })
+
     saveAs(blob, "event-schedule.ics")
   })
 }
