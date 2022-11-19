@@ -1,6 +1,5 @@
 import { FixtureItem } from "../types"
 import { createEvents, EventAttributes } from "ics"
-import { saveAs } from "file-saver"
 
 export const teamNameWithFlag = (teamName: string, rtl = false): string => {
   let flag = ""
@@ -107,6 +106,8 @@ export const teamNameWithFlag = (teamName: string, rtl = false): string => {
 
 export const createFixtureEvent = (fixture: FixtureItem) => {
   const fixtureDate = new Date(fixture.fixture.date)
+  const nintyMinutes = 90 * 60 * 1000
+  const fixtureEstimatedEndDate = new Date(fixtureDate.getTime() + nintyMinutes)
   const year = fixtureDate.getFullYear()
   const month = fixtureDate.getMonth() + 1
   const day = fixtureDate.getDate()
@@ -126,7 +127,7 @@ export const createFixtureEvent = (fixture: FixtureItem) => {
     busyStatus: "FREE",
     organizer: { name: "World Cup Bot", email: "copadelmundobot@gmail.com" },
   }
-  // console.log("Event created", event)
+
   return event
 }
 
@@ -137,10 +138,6 @@ export const downloadCalendarEvents = (fixtures: FixtureItem[]) => {
       console.log(error)
       return
     }
-    const blob = new Blob([value], {
-      type: "text/calendar'",
-    })
-
-    saveAs(blob, "event-schedule.ics")
+    window.open("data:text/calendar;charset=utf8," + value)
   })
 }
