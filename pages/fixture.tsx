@@ -37,14 +37,6 @@ const GroupInformation = styled.div`
   margin: 10px;
 `
 
-const GroupSelectorButton = styled.button`
-  display: flex;
-  width: 100px;
-
-  :disabled {
-    opacity: 0.5;
-  }
-`
 const Loading = styled.div`
   display: flex;
   justify-content: center;

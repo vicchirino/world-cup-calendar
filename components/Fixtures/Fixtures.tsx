@@ -48,6 +48,16 @@ const FixtureTeam = styled.div<FixtureTeamStyleProps>`
   font-weight: 500;
   min-width: 150px;
   padding: 0 10px;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    padding: 0 5px;
+    min-width: 120px;
+  }
+  @media (max-width: 500px) {
+    font-size: 14px;
+    padding: 0 2px;
+    min-width: 100px;
+  }
 `
 const FixtureStatusStyled = styled.div`
   margin: 10px;
@@ -59,6 +69,14 @@ const FixtureStatusStyled = styled.div`
   align-items: center;
   justify-self: center;
   align-self: center;
+  @media (max-width: 800px) {
+    padding: 5px 15px;
+    font-size: 16px;
+  }
+  @media (max-width: 500px) {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
 `
 const FixtureVenue = styled.div`
   display: flex;

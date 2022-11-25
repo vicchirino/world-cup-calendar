@@ -135,7 +135,7 @@ export const downloadCalendarEvents = (fixtures: FixtureItem[]) => {
   const events = fixtures.map(fixture => createFixtureEvent(fixture))
   createEvents(events, (error, value) => {
     if (error) {
-      console.log(error)
+      // console.log(error)
       return
     }
     window.open("data:text/calendar;charset=utf8," + value)

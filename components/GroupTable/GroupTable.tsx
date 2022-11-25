@@ -24,10 +24,10 @@ const GroupTableHeaderItem = styled.th<GroupTableHeaderItemProps>`
   display: flex;
   justify-content: ${props => props.alignText || "center"};
   align-items: center;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     width: ${props => `${props.width * 0.75}px`};
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     padding: 10px 5px;
     width: ${props => `${props.width * 0.55}px`};
   }
@@ -67,10 +67,11 @@ const GroupTableData = styled.td<GroupTableDataProps>`
   justify-content: ${props => props.alignText || "center"};
   font-size: 16px;
   font-weight: 500;
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     width: ${props => `${props.width * 0.75}px`};
+    font-size: 14px;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     padding: 10px 5px;
     width: ${props => `${props.width * 0.55}px`};
   }
@@ -91,6 +92,9 @@ const HeaderText = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 800px) {
+    font-size: 14px;
+  }
 `
 
 type GroupTableProps = {
