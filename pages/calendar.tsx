@@ -81,6 +81,7 @@ const CalendarPage = () => {
   const { formatMessage } = useIntl()
   const [teamsSelected, setTeamsSelected] = useState<string[]>([])
 
+  //@ts-ignore
   const fixturesItem: FixtureItem[] = fixtures.response as FixtureItem[]
   fixturesItem.map(item => createFixtureEvent(item))
 

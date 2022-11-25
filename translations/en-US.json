@@ -1,5 +1,6 @@
 {
   "NavBar.Calendar": "Calendar",
+  "NavBar.Fixture": "Fixture",
   "Calendar.Full.H1": "Download full calendar",
   "Calendar.Full.Body": "Download a calendar file with all the matches of the world cup 2022. This will create new events on Apple Calendar, Google Calendar or Microsoft Outlook. It will adjust automatically to your time zone.",
   "Calendar.Full.Button": "Download full 📅",

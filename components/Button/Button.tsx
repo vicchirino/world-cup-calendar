@@ -13,7 +13,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   height: 45px;
   border-radius: 10px;
   margin: 10px;
-  min-width: 250px;
+  padding: 0 20px;
   border: 2px solid ${props => props.theme.colors.scarlet};
   cursor: pointer;
   pointer-events: ${props => (props.disabled ? "none" : "auto")};

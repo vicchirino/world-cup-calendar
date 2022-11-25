@@ -1,5 +1,6 @@
 {
   "NavBar.Calendar": "Calendario",
+  "NavBar.Fixture": "Fixture",
   "Calendar.Full.H1": "Descarga el calendario completo",
   "Calendar.Full.Body": "Descargue un archivo de calendario con todos los partidos de la copa del mundo 2022. Esto creará nuevos eventos en Apple Calendar, Google Calendar o Microsoft Outlook. Se ajustará automáticamente a su zona horaria.",
   "Calendar.Full.Button": "Descarga full 📅",

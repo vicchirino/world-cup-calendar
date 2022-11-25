@@ -16,6 +16,7 @@ const Nav = styled.nav`
   padding: 10px;
   column-gap: 20px;
   border-bottom: 2px solid ${props => props.theme.colors.oceanBlue};
+  z-index: 2;
 `
 interface NavItemProps {
   selected: boolean
@@ -29,19 +30,41 @@ const NavItem = styled.div<NavItemProps>`
     props.selected ? props.theme.colors.mikado : props.theme.colors.white};
   font-weight: ${props => (props.selected ? "600" : "300")};
 `
+const LanguageButton = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid transparent;
+  outline: none;
+  :hover {
+    border: 2px solid ${props => props.theme.colors.mikado};
+  }
+`
 
 const NavBar = () => {
   const [selected, setSelected] = useState("calendar")
-  const { locale, locales } = useRouter()
+  const router = useRouter()
   const { formatMessage } = useIntl()
   return (
     <Nav>
-      <Link href={locale === "es" ? "/en-US/calendar" : "es/calendar"}>
-        <NavItem selected={false}>{locale === "es" ? "🇺🇸" : "🇦🇷"}</NavItem>
-      </Link>
+      <LanguageButton
+        onClick={() =>
+          router.push(router.asPath, router.asPath, {
+            locale: router.locale === "es" ? "en-US" : "es",
+          })
+        }
+      >
+        <NavItem selected={false}>
+          {router.locale === "es" ? "🇺🇸" : "🇦🇷"}
+        </NavItem>
+      </LanguageButton>
       <Link href="/calendar" onClick={() => setSelected("calendar")}>
         <NavItem selected={selected === "calendar"}>
           {formatMessage({ id: "NavBar.Calendar" })}
+        </NavItem>
+      </Link>
+      <Link href="/fixture" onClick={() => setSelected("fixture")}>
+        <NavItem selected={selected === "fixture"}>
+          {formatMessage({ id: "NavBar.Fixture" })}
         </NavItem>
       </Link>
 
