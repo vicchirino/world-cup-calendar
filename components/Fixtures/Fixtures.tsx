@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import { useIntl } from "react-intl"
 import styled from "styled-components"
 import { FixtureItem } from "../../types"
 import { teamNameWithFlag } from "../../utils"
@@ -101,6 +102,7 @@ type FixtureStatusProps = {
   fixture: FixtureItem
 }
 const FixtureStatus = ({ fixture }: FixtureStatusProps) => {
+  const { formatMessage } = useIntl()
   const router = useRouter()
   const fixtureDate = new Date(fixture.fixture.date).toLocaleString(
     router.locale,
@@ -125,16 +127,17 @@ const FixtureStatus = ({ fixture }: FixtureStatusProps) => {
       {fixture.fixture.status.short === "NS"
         ? fixtureDate
         : isFixtureLive
-        ? "Live"
+        ? formatMessage({ id: "Fixture.Live" })
         : matchResult}
     </FixtureStatusStyled>
   )
 }
 
 export const Fixtures = ({ fixtures }: FixturesProps) => {
+  const { formatMessage } = useIntl()
   return (
     <>
-      <FixtureTitle>Fixture</FixtureTitle>
+      <FixtureTitle>{formatMessage({ id: "Fixture.Fixture" })}</FixtureTitle>
       <FixtureWrapper>
         {fixtures.map((fixture, index) => (
           <FixtureRow key={`${fixture.fixture.id}-${index}`}>

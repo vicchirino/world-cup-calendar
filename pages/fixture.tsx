@@ -6,6 +6,7 @@ import { getStandings } from "../api/standingsAPI"
 import { getFixtures } from "../api/fixturesAPI"
 import { Fixtures } from "../components/Fixtures/Fixtures"
 import Button from "../components/Button/Button"
+import { useIntl } from "react-intl"
 
 const SectionWrapper = styled.div`
   display: flex;
@@ -53,6 +54,7 @@ type Group = {
   teamStandings: TeamStanding[]
 }
 const Fixture = () => {
+  const { formatMessage } = useIntl()
   const [groups, setGroups] = useState<Group[]>([])
   const [fixtures, setFixtures] = useState<FixtureItem[]>([])
   const [selectedGroup, setselectedGroup] = useState<Group | undefined>(
@@ -66,7 +68,7 @@ const Fixture = () => {
         standingItems[0].league.standings?.map((standing, index) => {
           return {
             index: index,
-            title: standing[0].group || "",
+            title: standing[0].group?.slice(6, 7) || "",
             teamStandings: standing.map(teamStanding => {
               return {
                 teamName: teamStanding.team.name,
@@ -96,7 +98,7 @@ const Fixture = () => {
   }, [])
 
   if (!selectedGroup) {
-    return <Loading>Loading..</Loading>
+    return <Loading>{formatMessage({ id: "Loading" })}</Loading>
   }
 
   return (
@@ -106,13 +108,18 @@ const Fixture = () => {
           <Button
             disabled={selectedGroup.index === 0}
             onClick={() => setselectedGroup(groups[selectedGroup.index - 1])}
-            text="Previous group"
+            text={formatMessage({ id: "Fixture.PreviousButton" })}
           />
-          <GroupTableCaption>{selectedGroup.title}</GroupTableCaption>
+          <GroupTableCaption>
+            {formatMessage(
+              { id: "Fixture.Group" },
+              { group: selectedGroup.title }
+            )}
+          </GroupTableCaption>
           <Button
             disabled={selectedGroup.index === groups.length - 1}
             onClick={() => setselectedGroup(groups[selectedGroup.index + 1])}
-            text="Next group"
+            text={formatMessage({ id: "Fixture.NextButton" })}
           />
         </GroupInformation>
         <GroupTable standings={selectedGroup.teamStandings} />

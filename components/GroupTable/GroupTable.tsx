@@ -1,3 +1,4 @@
+import { useIntl } from "react-intl"
 import styled from "styled-components"
 import { TeamStanding } from "../../types"
 import { teamNameWithFlag } from "../../utils"
@@ -102,36 +103,47 @@ type GroupTableProps = {
 }
 
 const GroupTable = ({ standings }: GroupTableProps) => {
+  const { formatMessage } = useIntl()
   return (
     <GroupTableStyled>
       <GroupTableHeader>
         <GroupTableRow transparent={true}>
           <GroupTableHeaderItem width={150} alignText="flex-start">
-            <HeaderText>Equipo</HeaderText>
+            <HeaderText>{formatMessage({ id: "GroupTable.Team" })}</HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>PJ</HeaderText>
+            <HeaderText>
+              {formatMessage({ id: "GroupTable.Played" })}
+            </HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>G</HeaderText>
+            <HeaderText>{formatMessage({ id: "GroupTable.Win" })}</HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>E</HeaderText>
+            <HeaderText>{formatMessage({ id: "GroupTable.Draw" })}</HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>P</HeaderText>
+            <HeaderText>{formatMessage({ id: "GroupTable.Lose" })}</HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>GF</HeaderText>
+            <HeaderText>
+              {formatMessage({ id: "GroupTable.GoalsFor" })}
+            </HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>GC</HeaderText>
+            <HeaderText>
+              {formatMessage({ id: "GroupTable.GoalsAgainst" })}
+            </HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>DG</HeaderText>
+            <HeaderText>
+              {formatMessage({ id: "GroupTable.GoalsDifference" })}
+            </HeaderText>
           </GroupTableHeaderItem>
           <GroupTableHeaderItem width={60}>
-            <HeaderText>Pts</HeaderText>
+            <HeaderText>
+              {formatMessage({ id: "GroupTable.Points" })}
+            </HeaderText>
           </GroupTableHeaderItem>
         </GroupTableRow>
       </GroupTableHeader>
