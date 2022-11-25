@@ -54,10 +54,15 @@ const FixtureTeam = styled.div<FixtureTeamStyleProps>`
     padding: 0 5px;
     min-width: 120px;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     font-size: 14px;
     padding: 0 2px;
     min-width: 100px;
+  }
+  @media (max-width: 400px) {
+    font-size: 10px;
+    padding: 0px 0px;
+    min-width: 80px;
   }
 `
 const FixtureStatusStyled = styled.div`
@@ -74,9 +79,13 @@ const FixtureStatusStyled = styled.div`
     padding: 5px 15px;
     font-size: 16px;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     font-size: 14px;
     padding: 5px 10px;
+  }
+  @media (max-width: 400px) {
+    font-size: 10px;
+    padding: 0px 5px;
   }
 `
 const FixtureVenue = styled.div`
@@ -93,6 +102,14 @@ const FixtureTitle = styled.div`
   font-weight: bold;
   margin: 0 10px;
   color: ${props => props.theme.colors.oceanBlue};
+  @media (max-width: 600px) {
+    font-size: 22px;
+    padding: 15px 10px;
+  }
+  @media (max-width: 400px) {
+    font-size: 18px;
+    padding: 10px 5px;
+  }
 `
 type FixturesProps = {
   fixtures: FixtureItem[]

@@ -32,9 +32,13 @@ const GroupTableHeaderItem = styled.th<GroupTableHeaderItemProps>`
     padding: 10px 5px;
     width: ${props => `${props.width * 0.55}px`};
   }
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     padding: 10px 0px;
     width: ${props => `${props.width * 0.5}px`};
+  }
+  @media (max-width: 400px) {
+    padding: 5px 0px;
+    width: ${props => `${props.width * 0.4}px`};
   }
 `
 const GroupTableBody = styled.tbody`
@@ -75,10 +79,20 @@ const GroupTableData = styled.td<GroupTableDataProps>`
   @media (max-width: 600px) {
     padding: 10px 5px;
     width: ${props => `${props.width * 0.55}px`};
+    font-size: 14px;
+    font-weight: 400;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     padding: 10px 0px;
     width: ${props => `${props.width * 0.5}px`};
+    font-size: 12px;
+    font-weight: 400;
+  }
+  @media (max-width: 400px) {
+    padding: 5px 0px;
+    width: ${props => `${props.width * 0.4}px`};
+    font-size: 10px;
+    font-weight: 300;
   }
 `
 
@@ -95,6 +109,14 @@ const HeaderText = styled.span`
   align-items: center;
   @media (max-width: 800px) {
     font-size: 14px;
+  }
+  @media (max-width: 500px) {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  @media (max-width: 400px) {
+    padding: 0px;
+    font-size: 8px;
   }
 `
 

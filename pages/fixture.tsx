@@ -28,6 +28,14 @@ const GroupTableCaption = styled.span`
   margin: 0 10px;
   font-weight: bold;
   color: ${props => props.theme.colors.oceanBlue};
+  @media (max-width: 600px) {
+    font-size: 22px;
+    padding: 15px 10px;
+  }
+  @media (max-width: 400px) {
+    font-size: 18px;
+    padding: 10px 5px;
+  }
 `
 
 const GroupInformation = styled.div`
